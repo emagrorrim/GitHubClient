@@ -1,0 +1,92 @@
+fastlane_version "1.104.0"
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Add testing devices. Run by the codebase manager."
+  lane :add_devices do
+    register_devices(devices_file: "./devices.txt")
+  end
+
+  desc 'Clear build folder and update carthage.'
+  lane :prepare do
+      # carthage_update
+      clear_build_files
+  end
+
+  desc "Update dependencies"
+  lane :cocoapods_update do
+    cocoapods(
+      clean: true,
+    )
+  end
+
+  desc 'Clear build files.'
+  lane :clear_build_files do
+      sh "rm -rf ~/Library/Developer/Xcode/DerivedData/*"
+  end
+
+  desc "Code stype check"
+  lane :lint do
+    swiftlint
+  end
+
+  desc "Run all tests on iPhone 6."
+  lane :run_test do
+    scan(
+      scheme: "StartKitTests",
+      configuration: "Debug",
+      clean: true,
+      device: "iPhone 6",
+      output_types: "html",
+      buildlog_path: './build',
+      output_directory: './build/reports'
+    )
+  end
+
+  desc "Checkin. Run this everytime before git push."
+  lane :checkin do
+    prepare
+    lint
+    run_test
+  end
+
+  desc "Build for ad-hoc"
+  lane :build do
+    match(
+      git_url: "git@bitbucket.org:iossocket/iosstartkitmatchrepo.git",
+      type: "adhoc",
+      app_identifier: "com.thoughtworks.StartKit",
+      readonly: true,
+      force_for_new_devices: true
+    )
+    gym(
+      configuration: "Release",
+      scheme: "StartKit",
+      sdk: "iphoneos10.0",
+      clean: true,
+      include_bitcode: false,
+      include_symbols: true,
+      export_method: "ad-hoc"
+    )
+  end
+
+  desc "Deploy beta to hockeyapp"
+  lane :deploy_beta do
+    hockey(
+      api_token: '2e6aadb3922b4f7182f970e4cc3bb9b7',
+      ipa: './StartKit.ipa'
+    )
+  end
+
+  desc "Test, build and deploy beta to hockeyapp"
+  lane :beta do
+    prepare
+    lint
+    run_test
+    build
+    deploy_beta
+  end
+
+end
