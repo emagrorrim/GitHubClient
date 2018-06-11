@@ -8,9 +8,7 @@ import Root from './Root';
 export default class App extends Component {
   render() {
     return (
-      <SafeAreaView>
-        <Root />
-      </SafeAreaView>
+      <Root />
     );
   }
 }
