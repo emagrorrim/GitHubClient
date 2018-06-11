@@ -7,7 +7,7 @@
     "ios": "react-native run-ios --simulator=\"iPhone 8\"",
     "iphone8": "react-native run-ios --simulator=\"iPhone 8\"",
     "iphone8p": "react-native run-ios --simulator=\"iPhone 8 Plus\"",
-    "iphoneX": "react-native run-ios --simulator=\"iPhone X\"",
+    "iphonex": "react-native run-ios --simulator=\"iPhone X\"",
     "test": "jest"
   },
   "dependencies": {
