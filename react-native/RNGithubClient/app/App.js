@@ -2,10 +2,21 @@ import React, { Component } from 'react'
 import {
   Text
 } from 'react-native'
-import TabBar from './Container/Common/TabBarContainer'
+import TabBarContainer from './Container/Common/TabBarContainer'
+import LoginContainer from './Container/Login/LoginContainer'
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedIn: true
+    }
+  }
   render() {
-    return (<TabBar />)
+    if (this.state.loggedIn) {
+      return (<TabBarContainer />)
+    } else {
+      return (<LoginContainer />)
+    }
   }
 }
