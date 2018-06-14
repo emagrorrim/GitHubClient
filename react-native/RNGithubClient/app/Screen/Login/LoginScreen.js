@@ -4,11 +4,11 @@ import {
   Text
 } from 'react-native'
 
-export default class NewsContainer extends Component {
+export default class LoginScreen extends Component {
   render() {
     return (
       <SafeAreaView>
-        <Text>News</Text>
+        <Text>Login</Text>
       </SafeAreaView>
     )
   }

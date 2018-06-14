@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {
   Text
 } from 'react-native'
-import TabBarContainer from './Container/Common/TabBarContainer'
-import LoginContainer from './Container/Login/LoginContainer'
+import TabBarController from './Screen/Common/TabBarController'
+import LoginScreen from './Screen/Login/LoginScreen'
 
 export default class App extends Component {
   constructor(props) {
@@ -14,9 +14,9 @@ export default class App extends Component {
   }
   render() {
     if (this.state.loggedIn) {
-      return (<TabBarContainer />)
+      return (<TabBarController />)
     } else {
-      return (<LoginContainer />)
+      return (<LoginScreen />)
     }
   }
 }

@@ -3,10 +3,10 @@ import {
 } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation'
 
-import NewsContainer from '../News/NewsContainer'
-import MeContainer from '../Me/MeContainer'
+import NewsScreen from '../News/NewsScreen'
+import MeScreen from '../Me/MeScreen'
 
 export default createBottomTabNavigator({
-  News: NewsContainer,
-  Me: MeContainer
+  News: NewsScreen,
+  Me: MeScreen
 })
