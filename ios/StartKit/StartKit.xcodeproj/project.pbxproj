@@ -44,6 +44,7 @@
 		7CE72E8220BC5FD1002A841D /* UserProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE72E8120BC5FD1002A841D /* UserProfileFactory.swift */; };
 		7CE72E8520BC6011002A841D /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE72E8420BC6011002A841D /* MockCoreDataStack.swift */; };
 		7CEBB8AA20BAEFB100C526F4 /* CoreDataLocalStorageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBB8A920BAEFB100C526F4 /* CoreDataLocalStorageSpec.swift */; };
+		7CFF754820E529D2005B4B15 /* GitHubProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF754720E529D2005B4B15 /* GitHubProfileViewController.swift */; };
 		83700384D6955E5D01C1419A /* Pods_StartKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E097B8D6C304E6B7E836629 /* Pods_StartKit.framework */; };
 		D0214F002099A58200D51A4B /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0214EFF2099A58200D51A4B /* ParameterEncoding.swift */; };
 		D0214F022099A5B900D51A4B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0214F012099A5B900D51A4B /* Request.swift */; };
@@ -117,6 +118,7 @@
 		7CE72E8120BC5FD1002A841D /* UserProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileFactory.swift; sourceTree = "<group>"; };
 		7CE72E8420BC6011002A841D /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
 		7CEBB8A920BAEFB100C526F4 /* CoreDataLocalStorageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLocalStorageSpec.swift; sourceTree = "<group>"; };
+		7CFF754720E529D2005B4B15 /* GitHubProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubProfileViewController.swift; sourceTree = "<group>"; };
 		8EF741C4AB61026E66053368 /* Pods-StartKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-StartKit/Pods-StartKit.release.xcconfig"; sourceTree = "<group>"; };
 		A192D239AFBD393CB38FE8E6 /* Pods-StartKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StartKitTests/Pods-StartKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		BD967C48210F009CF8011DB4 /* Pods_StartKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StartKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,11 +469,20 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
-		7CFF754420E521DA005B4B15 /* Me */ = {
+		7CFF754420E521DA005B4B15 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				7CFF754620E529BD005B4B15 /* View */,
 			);
-			path = Me;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7CFF754620E529BD005B4B15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CFF754720E529D2005B4B15 /* GitHubProfileViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D0214F0C2099A65B00D51A4B /* API */ = {
@@ -558,7 +569,7 @@
 		D2C0C2C77017C434EB639DE8 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
-				7CFF754420E521DA005B4B15 /* Me */,
+				7CFF754420E521DA005B4B15 /* Profile */,
 				7C4DF09E20A876D400BBBA42 /* Event */,
 				7C63A4DC20A46DF200DF5D47 /* Home */,
 				D2C0C9788FC9850E9468F687 /* Login */,
@@ -932,6 +943,7 @@
 				7C5F9FC020A72C64009AFF5C /* GitHubLoginConfiguration.swift in Sources */,
 				7CC7F05A20A77EC7003269B0 /* CoreDataLocalStorage.swift in Sources */,
 				7C4DF0AC20A8B11900BBBA42 /* Event.swift in Sources */,
+				7CFF754820E529D2005B4B15 /* GitHubProfileViewController.swift in Sources */,
 				7C63A4DB20A46BF500DF5D47 /* GitHubLoginViewController.swift in Sources */,
 				7CD22F4420A5B77700A809FC /* GitHubLoginRequest.swift in Sources */,
 				7CC7F07420A85589003269B0 /* KeychainAccessor.swift in Sources */,

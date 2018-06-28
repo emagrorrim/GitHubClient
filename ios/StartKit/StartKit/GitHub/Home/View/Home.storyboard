@@ -16,7 +16,7 @@
                 <navigationController id="9hF-m5-9ag" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="News" id="atW-xx-Qgy"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="NBM-mw-VaS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NBM-mw-VaS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -68,7 +68,7 @@
                 <navigationController id="ffH-PM-nqr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="MEU-PZ-5Oq"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="c1P-ab-3ie">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c1P-ab-3ie">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -83,30 +83,42 @@
         <!--Profile-->
         <scene sceneID="qMV-Jq-ez3">
             <objects>
-                <viewController id="SE7-IU-HX1" sceneMemberID="viewController">
+                <viewController id="SE7-IU-HX1" customClass="GitHubProfileViewController" customModule="StartKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UX2-mq-3Ka">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Nc-t8-NwD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Nc-t8-NwD" firstAttribute="leading" secondItem="hN4-0k-fKc" secondAttribute="leading" id="IZr-C1-bdX"/>
+                            <constraint firstAttribute="bottom" secondItem="5Nc-t8-NwD" secondAttribute="bottom" id="LKV-60-Jy8"/>
+                            <constraint firstItem="5Nc-t8-NwD" firstAttribute="top" secondItem="UX2-mq-3Ka" secondAttribute="top" id="UfR-er-Psq"/>
+                            <constraint firstItem="5Nc-t8-NwD" firstAttribute="trailing" secondItem="hN4-0k-fKc" secondAttribute="trailing" id="b3Y-6g-av8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hN4-0k-fKc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="dMX-rg-xEX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5q-gv-KFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="206"/>
+            <point key="canvasLocation" x="901.60000000000002" y="205.54722638680661"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JB5-63-8gD">
             <objects>
                 <tabBarController id="IWI-Iz-l1R" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="HBP-13-sj4">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HBP-13-sj4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.036042619953118173" green="0.19869251943005184" blue="0.19695708045692617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9hF-m5-9ag" kind="relationship" relationship="viewControllers" id="W2D-FJ-cnP"/>
