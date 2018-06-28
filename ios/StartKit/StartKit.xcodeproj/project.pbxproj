@@ -467,6 +467,13 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
+		7CFF754420E521DA005B4B15 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		D0214F0C2099A65B00D51A4B /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +558,7 @@
 		D2C0C2C77017C434EB639DE8 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
+				7CFF754420E521DA005B4B15 /* Me */,
 				7C4DF09E20A876D400BBBA42 /* Event */,
 				7C63A4DC20A46DF200DF5D47 /* Home */,
 				D2C0C9788FC9850E9468F687 /* Login */,
