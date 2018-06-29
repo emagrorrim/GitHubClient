@@ -13,6 +13,7 @@ class GitHubEventsDataSource: NSObject, UITableViewDataSource {
   
   init(events: [Event]) {
     self.events = events
+    super.init()
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {

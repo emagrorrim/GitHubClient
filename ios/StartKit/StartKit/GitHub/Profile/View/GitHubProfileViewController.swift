@@ -8,6 +8,27 @@
 
 import UIKit
 
+protocol GitHubProfileView {
+  func configure(with dataSource: GitHubProfileViewDataSource)
+}
+
 class GitHubProfileViewController: UIViewController {
+  @IBOutlet weak var tableView: UITableView!
   
+  var interactor: GitHubProfileInteractor!
+  
+  private var dataSource: GitHubProfileViewDataSource!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.tableView.tableFooterView = UIView()
+  }
+}
+
+extension GitHubProfileViewController: GitHubProfileView {
+  func configure(with dataSource: GitHubProfileViewDataSource) {
+    self.dataSource = dataSource
+    self.tableView.dataSource = dataSource
+    self.tableView.reloadData()
+  }
 }
