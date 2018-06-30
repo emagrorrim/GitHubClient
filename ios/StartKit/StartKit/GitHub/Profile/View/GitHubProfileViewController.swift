@@ -8,20 +8,39 @@
 
 import UIKit
 
-protocol GitHubProfileView {
+enum GitHubProfileViewSection: Int {
+  case user
+  case menu
+}
+
+protocol GitHubProfileView: class {
   func configure(with dataSource: GitHubProfileViewDataSource)
 }
 
 class GitHubProfileViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
-  var interactor: GitHubProfileInteractor!
+  var interactor: (GitHubProfileInteractor & UITableViewDelegate)!
   
   private var dataSource: GitHubProfileViewDataSource!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    GitHubProfileConfiguration.configure(viewController: self)
+    
+    self.setupTableView()
+    self.loadData()
+  }
+  
+  private func setupTableView() {
+    self.tableView.delegate = self.interactor
+    self.tableView.backgroundColor = UIColor.groupTableViewBackground
+    self.tableView.estimatedRowHeight = 200
     self.tableView.tableFooterView = UIView()
+  }
+  
+  private func loadData() {
+    self.interactor.loadUserProfile()
   }
 }
 

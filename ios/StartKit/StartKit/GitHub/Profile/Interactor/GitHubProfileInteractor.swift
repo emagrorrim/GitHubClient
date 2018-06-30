@@ -6,21 +6,26 @@
 //  Copyright © 2018 ThoughtWorks. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 
 protocol GitHubProfileInteractor {
   func loadUserProfile()
+  func logout()
 }
 
-class GitHubProfileInteractorImpl: GitHubProfileInteractor {
+class GitHubProfileInteractorImpl: NSObject, GitHubProfileInteractor, UITableViewDelegate {
   private let localStorage: LocalStorage
+  private let keychainAccessor: KeychainAccessor
   private let disposeBag = DisposeBag()
   
-  var presenter: GitHubProfilePresenter!
+  var presenter: GitHubProfilePresenter
   
-  init(localStorage: LocalStorage) {
+  init(presenter: GitHubProfilePresenter, localStorage: LocalStorage, keychainAccessor: KeychainAccessor) {
+    self.presenter = presenter
     self.localStorage = localStorage
+    self.keychainAccessor = keychainAccessor
+    super.init()
   }
   
   func loadUserProfile() {
@@ -31,9 +36,14 @@ class GitHubProfileInteractorImpl: GitHubProfileInteractor {
           self?.presenter.configureEmptyPage()
           return
         }
-        self?.presenter.configureProfilePage(with: userProfile)
+        self?.presenter.configureProfilePage(with: userProfile, logoutAction: { self?.logout() })
         }, onError: { error in
           print("Local storage fetching user profile failed: \(error)")
       }).disposed(by: self.disposeBag)
+  }
+  
+  func logout() {
+    localStorage.deleteAllObjects(for: UserMapper().entityName)
+    keychainAccessor.clearAccount()
   }
 }
