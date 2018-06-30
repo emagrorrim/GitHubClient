@@ -42,6 +42,8 @@ class GitHubProfileViewController: UIViewController {
     self.tableView.backgroundColor = UIColor.groupTableViewBackground
     self.tableView.estimatedRowHeight = 200
     self.tableView.tableFooterView = UIView()
+    self.tableView.sectionHeaderHeight = 1
+    self.tableView.sectionFooterHeight = 50
   }
   
   private func loadDataIfNeeded() {
