@@ -45,5 +45,7 @@ class GitHubProfileInteractorImpl: NSObject, GitHubProfileInteractor, UITableVie
   func logout() {
     localStorage.deleteAllObjects(for: UserMapper().entityName)
     keychainAccessor.clearAccount()
+    self.presenter.configureEmptyPage()
+    NotificationCenter.default.post(name: Notification.Name.LoginStatusChangedNotificationName, object: nil)
   }
 }

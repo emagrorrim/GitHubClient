@@ -26,7 +26,7 @@ class GitHubProfilePresenterImpl: GitHubProfilePresenter {
   }
   
   func configureEmptyPage() {
-    
+    self.view?.showEmptyPage()
   }
   
   private func buildMenu(logout: @escaping () -> Void) -> [GitHubProfileViewDataSource.MenuItem] {

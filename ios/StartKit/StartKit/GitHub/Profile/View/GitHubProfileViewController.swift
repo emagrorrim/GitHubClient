@@ -15,6 +15,7 @@ enum GitHubProfileViewSection: Int {
 
 protocol GitHubProfileView: class {
   func configure(with dataSource: GitHubProfileViewDataSource)
+  func showEmptyPage()
 }
 
 class GitHubProfileViewController: UIViewController {
@@ -29,7 +30,11 @@ class GitHubProfileViewController: UIViewController {
     GitHubProfileConfiguration.configure(viewController: self)
     
     self.setupTableView()
-    self.loadData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.loadDataIfNeeded()
   }
   
   private func setupTableView() {
@@ -39,8 +44,10 @@ class GitHubProfileViewController: UIViewController {
     self.tableView.tableFooterView = UIView()
   }
   
-  private func loadData() {
-    self.interactor.loadUserProfile()
+  private func loadDataIfNeeded() {
+    if tableView.dataSource == nil {
+      self.interactor.loadUserProfile()
+    }
   }
 }
 
@@ -48,6 +55,11 @@ extension GitHubProfileViewController: GitHubProfileView {
   func configure(with dataSource: GitHubProfileViewDataSource) {
     self.dataSource = dataSource
     self.tableView.dataSource = dataSource
+    self.tableView.reloadData()
+  }
+  
+  func showEmptyPage() {
+    self.tableView.dataSource = nil
     self.tableView.reloadData()
   }
 }

@@ -9,6 +9,10 @@
 import UIKit
 import RxSwift
 
+extension NSNotification.Name {
+  static let LoginStatusChangedNotificationName = NSNotification.Name("LoginStatusChangedNotificationName")
+}
+
 class ContainerViewController: UIViewController {
   let loaclStorage = CoreDataLocalStorage()
   let disposeBag = DisposeBag()
@@ -21,6 +25,12 @@ class ContainerViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     showLoginViewControllerIfNeeded()
+    NotificationCenter.default.addObserver(self, selector: #selector(showLoginViewControllerIfNeeded), name: Notification.Name.LoginStatusChangedNotificationName, object: nil)
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    NotificationCenter.default.removeObserver(self)
   }
   
   func showLoginViewController() {
@@ -44,7 +54,7 @@ class ContainerViewController: UIViewController {
     viewController.didMove(toParentViewController: self)
   }
   
-  func showLoginViewControllerIfNeeded() {
+  @objc func showLoginViewControllerIfNeeded() {
     loaclStorage.queryOne(withMapper: UserMapper())
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [unowned self] userProfile in
