@@ -1,7 +1,6 @@
 import { ADD_TASK, DELETE_TASK, UPDATE_TASK } from '../actions/types';
 
 export default (state = [], action) => {
-  console.log(action);
   switch (action.type) {
     case ADD_TASK:
       return [action.payload.task, ...state];
