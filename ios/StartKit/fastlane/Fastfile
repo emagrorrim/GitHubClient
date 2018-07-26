@@ -9,9 +9,9 @@ platform :ios do
     register_devices(devices_file: "./devices.txt")
   end
 
-  desc 'Clear build folder and update carthage.'
+  desc 'Clear build folder and update cocoapods.'
   lane :prepare do
-      # carthage_update
+      sh "cd ..; bundle exec pod install"
       clear_build_files
   end
 
@@ -32,13 +32,13 @@ platform :ios do
     swiftlint
   end
 
-  desc "Run all tests on iPhone 6."
+  desc "Run all tests on iPhone 8."
   lane :run_test do
     scan(
       scheme: "StartKitTests",
       configuration: "Debug",
       clean: true,
-      device: "iPhone 6",
+      device: "iPhone 8",
       output_types: "html",
       buildlog_path: './build',
       output_directory: './build/reports'
